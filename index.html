@@ -14,16 +14,38 @@
 
     <section class="couple">
         <h2>The Happy Couple</h2>
-        <img src="ours.jpg" alt="Us" class="main-photo">
+        <img src="images/main.jpg" alt="Us" class="main-photo">
         <div class="other-photos">
-            <img src="photo1.jpg" alt="Additional Photo 1" class="photo">
-            <img src="photo2.jpg" alt="Additional Photo 2" class="photo">
+            <img src="images/fathers.jpg" alt="Additional Photo 1" class="photo">
+            <img src="images/hands.jpg" alt="Additional Photo 2" class="photo">
+        </div>
+    </section>
+
+    <section class="countdown">
+        <h2>Countdown to Our Wedding!</h2>
+        <div class="timer">
+            <div class="time-unit">
+                <span id="days" class="time-value">0</span>
+                <p class="time-label">Days</p>
+            </div>
+            <div class="time-unit">
+                <span id="hours" class="time-value">0</span>
+                <p class="time-label">Hours</p>
+            </div>
+            <div class="time-unit">
+                <span id="minutes" class="time-value">0</span>
+                <p class="time-label">Minutes</p>
+            </div>
+            <div class="time-unit">
+                <span id="seconds" class="time-value">0</span>
+                <p class="time-label">Seconds</p>
+            </div>
         </div>
     </section>
 
     <section class="schedule">
         <h2>Wedding Itinerary</h2>
-        <p>Join Grigor & Larisa as we celebrate our wedding day on <strong>April 21, 2026</strong></p>
+        <p>Join Grigor & Larisa as we celebrate our wedding day on <strong>July 24, 2026</strong></p>
         <ul>
             <li><strong>10:00 AM</strong> - Departure from Grigor's Home</li>
             <li><strong>11:00 AM</strong> - Pickup from Larisa's Home</li>
@@ -35,19 +57,19 @@
     <section class="locations">
         <h2>Wedding Locations</h2>
         <div class="location">
-            <img src="husband_home.jpg" alt="Husband's Home" class="location-photo">
+            <img src="images/husband_home.jpg" alt="Husband's Home" class="location-photo">
             <p><strong>Husband's Home:</strong> [Husband's Home Address]</p>
         </div>
         <div class="location">
-            <img src="wife_home.jpg" alt="Wife's Home" class="location-photo">
+            <img src="images/wife_home.jpg" alt="Wife's Home" class="location-photo">
             <p><strong>Wife's Home:</strong> [Wife's Home Address]</p>
         </div>
         <div class="location">
-            <img src="church.jpg" alt="Church" class="location-photo">
+            <img src="images/church.jpg" alt="Church" class="location-photo">
             <p><strong>Church:</strong> [Church Address]</p>
         </div>
         <div class="location">
-            <img src="restaurant.jpg" alt="Restaurant" class="location-photo">
+            <img src="images/restaurant.jpg" alt="Restaurant" class="location-photo">
             <p><strong>Restaurant:</strong> [Restaurant Address]</p>
         </div>
     </section>
@@ -61,5 +83,45 @@
     <footer>
         <p>RSVP: grigor.tumanyan@email.com or larisa.rashoyan@email.com | Phone: [Your Phone Number]</p>
     </footer>
+
+    <script>
+        function updateCountdown() {
+            // Set the wedding date and time: July 24, 2026 at 14:00 (2:00 PM)
+            const weddingDate = new Date('July 24, 2026 14:00:00').getTime();
+
+            // Update the countdown every 1 second
+            const countdownInterval = setInterval(function() {
+                // Get current date and time
+                const now = new Date().getTime();
+
+                // Calculate time difference
+                const distance = weddingDate - now;
+
+                // Calculate days, hours, minutes, seconds
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Update the DOM
+                document.getElementById('days').textContent = days;
+                document.getElementById('hours').textContent = hours;
+                document.getElementById('minutes').textContent = minutes;
+                document.getElementById('seconds').textContent = seconds;
+
+                // If the countdown is finished
+                if (distance < 0) {
+                    clearInterval(countdownInterval);
+                    document.getElementById('days').textContent = '0';
+                    document.getElementById('hours').textContent = '0';
+                    document.getElementById('minutes').textContent = '0';
+                    document.getElementById('seconds').textContent = '0';
+                }
+            }, 1000);
+        }
+
+        // Start countdown when page loads
+        window.addEventListener('load', updateCountdown);
+    </script>
 </body>
 </html>
