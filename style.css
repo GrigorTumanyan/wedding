@@ -93,6 +93,12 @@ iframe {
     border: 2px solid #d4af37;
 }
 
+.time {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
 footer {
     background-color: #333;
     color: #fff;
