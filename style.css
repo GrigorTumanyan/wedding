@@ -50,6 +50,17 @@ header h1 {
     z-index: 1;
 }
 
+.header-title {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header-title:hover {
+    text-shadow: 2px 2px 8px rgba(212, 175, 55, 0.8);
+    letter-spacing: 3px;
+    transform: scale(1.02);
+}
+
 .header-nav {
     display: flex;
     justify-content: center;

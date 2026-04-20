@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>✨ You're Invited to Our Wedding ✨</h1>
+    <header id="home">
+        <h1 class="header-title">✨ You're Invited to Our Wedding ✨</h1>
         <p class="couple-names"><strong>Grigor Tumanyan & Larisa Rashoyan</strong></p>
         <p class="tagline">Join us for a day of love and celebration.</p>
         <nav class="header-nav">
+            <a href="#home" class="nav-link">Home</a>
             <a href="#couple" class="nav-link">The Couple</a>
             <a href="#countdown" class="nav-link">Countdown</a>
             <a href="#itinerary" class="nav-link">Itinerary</a>
@@ -137,8 +138,20 @@
         // Start countdown when page loads
         window.addEventListener('load', updateCountdown);
 
-        // Handle directions button clicks
+        // Make header title clickable to scroll to top
         document.addEventListener('DOMContentLoaded', function() {
+            const headerTitle = document.querySelector('.header-title');
+            if (headerTitle) {
+                headerTitle.addEventListener('click', function() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+                headerTitle.style.cursor = 'pointer';
+            }
+
+            // Handle directions button clicks
             const directionsButtons = document.querySelectorAll('.directions-btn');
 
             directionsButtons.forEach(button => {
