@@ -63,21 +63,25 @@
                 <img src="images/husband_home.jpg" alt="Grigor's Home" class="location-photo">
                 <p><strong>Grigor's Home</strong></p>
                 <p class="time">10:00 AM</p>
+                <button class="directions-btn" data-lat="40.1792" data-lng="44.4991" data-name="Grigor's Home">Get Directions</button>
             </div>
             <div class="location">
                 <img src="images/wife_home.jpg" alt="Larisa's Home" class="location-photo">
                 <p><strong>Larisa's Home</strong></p>
                 <p class="time">11:00 AM</p>
+                <button class="directions-btn" data-lat="40.1780" data-lng="44.5010" data-name="Larisa's Home">Get Directions</button>
             </div>
             <div class="location">
                 <img src="images/church.jpg" alt="Church" class="location-photo">
                 <p><strong>Church</strong></p>
                 <p class="time">12:00 PM</p>
+                <button class="directions-btn" data-lat="40.1765" data-lng="44.5020" data-name="Church">Get Directions</button>
             </div>
             <div class="location">
                 <img src="images/restaurant.jpg" alt="Reception" class="location-photo">
                 <p><strong>Reception Hall</strong></p>
                 <p class="time">2:00 PM</p>
+                <button class="directions-btn" data-lat="40.1750" data-lng="44.5030" data-name="Reception Hall">Get Directions</button>
             </div>
         </div>
     </section>
@@ -130,6 +134,55 @@
 
         // Start countdown when page loads
         window.addEventListener('load', updateCountdown);
+
+        // Handle directions button clicks
+        document.addEventListener('DOMContentLoaded', function() {
+            const directionsButtons = document.querySelectorAll('.directions-btn');
+
+            directionsButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const destLat = this.getAttribute('data-lat');
+                    const destLng = this.getAttribute('data-lng');
+                    const destName = this.getAttribute('data-name');
+
+                    // Check if geolocation is available
+                    if (navigator.geolocation) {
+                        this.textContent = 'Getting your location...';
+                        this.disabled = true;
+
+                        navigator.geolocation.getCurrentPosition(
+                            function(position) {
+                                const currentLat = position.coords.latitude;
+                                const currentLng = position.coords.longitude;
+
+                                // Open Google Maps with directions
+                                const mapsUrl = `https://www.google.com/maps/dir/${currentLat},${currentLng}/${destLat},${destLng}?travelmode=driving`;
+                                window.open(mapsUrl, '_blank');
+
+                                // Reset button
+                                button.textContent = 'Get Directions';
+                                button.disabled = false;
+                            },
+                            function(error) {
+                                // If geolocation fails, open without current location
+                                alert('Could not get your location. Opening directions to ' + destName);
+                                const mapsUrl = `https://www.google.com/maps/search/${destLat},${destLng}`;
+                                window.open(mapsUrl, '_blank');
+
+                                // Reset button
+                                button.textContent = 'Get Directions';
+                                button.disabled = false;
+                            }
+                        );
+                    } else {
+                        // Fallback if geolocation is not available
+                        alert('Geolocation is not supported by your browser. Opening location in Google Maps...');
+                        const mapsUrl = `https://www.google.com/maps/search/${destLat},${destLng}`;
+                        window.open(mapsUrl, '_blank');
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
