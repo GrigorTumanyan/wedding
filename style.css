@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap&font-display=swap');
 
 * {
     margin: 0;
@@ -178,6 +178,11 @@ h2::after {
     margin-bottom: 40px;
     box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
     transition: transform 0.3s ease;
+    display: block;
+}
+
+.main-photo-picture {
+    display: block;
 }
 
 .main-photo:hover {
@@ -359,6 +364,11 @@ li:hover {
     margin-bottom: 20px;
     box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
     transition: transform 0.3s ease;
+    display: block;
+}
+
+picture {
+    display: block;
 }
 
 .location-photo:hover {
