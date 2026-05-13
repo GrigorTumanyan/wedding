@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation - Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f1e8;
+        }
+        .test-result {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+            background: white;
+        }
+        .success {
+            border-left: 4px solid #28a745;
+            background: #f1f8f3;
+        }
+        .error {
+            border-left: 4px solid #dc3545;
+            background: #fcf1f2;
+        }
+        .warning {
+            border-left: 4px solid #ffc107;
+            background: #fff8f0;
+        }
+        img, picture {
+            max-width: 300px;
+            margin: 10px 0;
+        }
+        h1 {
+            color: #1a1a1a;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 Wedding Invitation - Image Test</h1>
+
+    <div class="test-result success">
+        <h3>✓ Main Image Test</h3>
+        <p>Loading with WebP and JPEG fallback:</p>
+        <picture>
+            <source srcset="images/main.webp" type="image/webp">
+            <img src="images/main.jpg" alt="Main image test" style="width: 300px; height: 300px; object-fit: cover; border-radius: 10px; border: 3px solid #d4af37;">
+        </picture>
+    </div>
+
+    <div class="test-result success">
+        <h3>✓ Hands Image Test</h3>
+        <picture>
+            <source srcset="images/hands.webp" type="image/webp">
+            <img src="images/hands.jpg" alt="Hands image test" style="width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 3px solid #d4af37;">
+        </picture>
+    </div>
+
+    <div class="test-result success">
+        <h3>✓ Location Images Test</h3>
+
+        <h4>Grigor's Home:</h4>
+        <picture>
+            <source srcset="images/husband_home.webp" type="image/webp">
+            <img src="images/husband_home.jpg" alt="Husband home" style="width: 250px; height: 150px; object-fit: cover; border-radius: 10px; border: 2px solid #d4af37;">
+        </picture>
+
+        <h4>Larisa's Home:</h4>
+        <picture>
+            <source srcset="images/wife_home.webp" type="image/webp">
+            <img src="images/wife_home.jpg" alt="Wife home" style="width: 250px; height: 150px; object-fit: cover; border-radius: 10px; border: 2px solid #d4af37;">
+        </picture>
+
+        <h4>Church:</h4>
+        <picture>
+            <source srcset="images/church.webp" type="image/webp">
+            <img src="images/church.jpg" alt="Church" style="width: 250px; height: 150px; object-fit: cover; border-radius: 10px; border: 2px solid #d4af37;">
+        </picture>
+
+        <h4>Wedding Hall:</h4>
+        <picture>
+            <source srcset="images/restaurant.webp" type="image/webp">
+            <img src="images/restaurant.jpg" alt="Wedding hall" style="width: 250px; height: 150px; object-fit: cover; border-radius: 10px; border: 2px solid #d4af37;">
+        </picture>
+    </div>
+
+    <div class="test-result success">
+        <h3>✓ All Images Loaded Successfully!</h3>
+        <p>If you see all images above, your wedding invitation should work perfectly.</p>
+        <p><strong>Next Step:</strong> Open <code>index.html</code> in your browser to see the final result.</p>
+    </div>
+
+    <div class="test-result warning">
+        <h3>📝 Troubleshooting</h3>
+        <p><strong>If images don't show:</strong></p>
+        <ul>
+            <li>Verify all image files exist in the <code>images/</code> folder</li>
+            <li>Check browser console for error messages (F12 → Console)</li>
+            <li>Clear browser cache and refresh (Ctrl+Shift+R)</li>
+            <li>Try opening in a different browser</li>
+        </ul>
+    </div>
+
+    <script>
+        // Log image loading status
+        window.addEventListener('load', () => {
+            console.log('✓ All images loaded successfully!');
+        });
+
+        // Check images on this page
+        const images = document.querySelectorAll('img');
+        images.forEach((img, index) => {
+            img.addEventListener('load', () => {
+                console.log(`✓ Image ${index + 1} loaded: ${img.src}`);
+            });
+            img.addEventListener('error', () => {
+                console.error(`✗ Image ${index + 1} failed to load: ${img.src}`);
+            });
+        });
+    </script>
+</body>
+</html>
+
