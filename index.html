@@ -7,30 +7,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="theme.css">
+    <!-- AOS for subtle scroll animations -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
     <header id="home">
-        <h1 class="header-title">✨ You're Invited to Our Wedding ✨</h1>
-        <p class="couple-names"><strong>Grigor Tumanyan & Larisa Rashoyan</strong></p>
-        <p class="tagline">Join us for a day of love and celebration.</p>
-        <nav class="header-nav">
-            <a href="#home" class="nav-link">Home</a>
-            <a href="#couple" class="nav-link">The Couple</a>
-            <a href="#countdown" class="nav-link">Countdown</a>
-            <a href="#itinerary" class="nav-link">Itinerary</a>
-            <a href="#locations" class="nav-link">Locations</a>
-            <a href="#rsvp" class="nav-link">RSVP</a>
-        </nav>
-    </header>
+        <div class="hero-wrap">
+            <div class="hero-left" data-aos="fade-up">
+                <h1 class="header-title">You're Invited to Our Wedding</h1>
+                <p class="couple-names"><strong>Grigor Tumanyan &amp; Larisa Rashoyan</strong></p>
+                <p class="tagline">Join us for a day of love and celebration — July 24, 2026</p>
+                <nav class="header-nav hero-cta">
+                    <a href="#countdown" class="nav-link hero-btn">See Countdown</a>
+                    <a href="#locations" class="nav-link hero-btn">Locations</a>
+                    <a href="#rsvp" class="nav-link hero-btn">RSVP</a>
+                </nav>
+            </div>
 
-    <section class="couple" id="couple">
-        <h2>The Happy Couple</h2>
-        <p class="subtitle">Grigor & Larisa</p>
-        <img src="images/main.jpg" alt="Grigor and Larisa" class="main-photo" loading="lazy">
-        <div class="other-photos">
-            <img src="images/hands.jpg" alt="Additional Photo 2" class="photo" loading="lazy">
+            <div class="hero-right" data-aos="zoom-in">
+                <div>
+                    <div class="hero-photo-wrap">
+                        <img src="images/hands.jpg" alt="Grigor and Larisa" class="hero-photo" loading="lazy">
+                    </div>
+                    <p class="subtitle">Grigor &amp; Larisa</p>
+                </div>
+            </div>
         </div>
-    </section>
+    </header>
 
     <section class="countdown" id="countdown">
         <h2>Countdown to Our Wedding!</h2>
@@ -101,6 +105,7 @@
         <p>RSVP: tumanyangrigor578@gmail.com | Phone: +37498502609</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         function updateCountdown() {
             // Set the wedding date and time: July 24, 2026 at 14:00 (2:00 PM)
@@ -199,6 +204,18 @@
                     }
                 });
             });
+
+            // Fade-in images once loaded for smoother appearance
+            const allImages = document.querySelectorAll('img');
+            allImages.forEach(img => {
+                if (img.complete) img.classList.add('loaded');
+                else img.addEventListener('load', () => img.classList.add('loaded'));
+            });
+
+            // Initialize AOS (animate on scroll)
+            if (window.AOS) {
+                AOS.init({ duration: 700, easing: 'ease-in-out', once: true });
+            }
         });
     </script>
 </body>
