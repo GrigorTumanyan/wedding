@@ -19,8 +19,18 @@ header::after{
 /* couple-card glass effect fallback */
 .couple-card{background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.06)}
 
-/* small decorative flourish under headings */
-h2::before{content:'✦';display:block;text-align:center;color:var(--accent);margin-bottom:6px;opacity:0.85}
+/* More elaborate decorative flourish under headings */
+h2::before{content:'◆ ◆ ◆';display:block;text-align:center;color:var(--accent);margin-bottom:8px;opacity:0.8;letter-spacing:8px;font-size:0.9rem}
+
+/* Add subtle decorative dots pattern to sections */
+section::before{
+  content:'';
+  position:absolute;top:-1px;right:-1px;width:120px;height:120px;
+  background-image:radial-gradient(circle, rgba(212,175,55,0.05) 2px, transparent 2px);
+  background-size:24px 24px;
+  pointer-events:none;
+  opacity:0.6;
+}
 
 /* smooth image fade-in for better perceived performance */
 img{opacity:0;transform:translateY(6px);transition:opacity .6s ease,transform .6s ease}
